@@ -6,11 +6,11 @@ const mongoose = require('mongoose');
 
 process.on('uncaughtException', error => {
     console.log(error.name, error.message);
-    console.log('🔥🔥🔥 Uncaught Exception 🔥🔥🔥');
+    console.log(`🔥🔥🔥  Uncaught Exception 🔥🔥🔥`);
     process.exit(1);
 });
 
-dotenv.config({path: './../../../../config.env'});
+dotenv.config({path: './config.env'});
 const app       = require('./app');
 const port      = process.env.APP_PORT;
 

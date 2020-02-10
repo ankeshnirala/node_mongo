@@ -1,0 +1,16 @@
+{
+  "name": "my_portfolio",
+  "version": "1.0.0",
+  "description": "nodejs express mongodb reactjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm start",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "node_mongodb"
+  },
+  "author": "ankesh",
+  "license": "ISC"
+}

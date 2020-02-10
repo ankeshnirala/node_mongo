@@ -14,9 +14,9 @@ dotenv.config({path: './config.env'});
 const app       = require('./app');
 const port      = process.env.APP_PORT;
 
-const _db = process.env.MONGODB_DATABASE.replace('<PASSWORD>', process.env.MONGODB_DB_PASSWORD);
+// const _db = process.env.MONGODB_DATABASE.replace('<PASSWORD>', process.env.MONGODB_DB_PASSWORD);
 
-mongoose.connect(_db, {
+mongoose.connect(process.env.MONGODB_DATABASE_LOCAL, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,

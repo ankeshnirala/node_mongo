@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./userModel');
 
 const toursSchema = new mongoose.Schema({
     name: {
@@ -70,7 +71,39 @@ const toursSchema = new mongoose.Schema({
         default: Date.now(),
         select: false
     },
-    startDate: [Date]
+    startDate: [Date],
+    startLocation: {
+        //GeoLocation in mongoose
+        type: {
+            type: String,
+            default: 'Point',
+            enum: ['Point']
+        },
+        coordinates: [Number],
+        address: String,
+        description: String
+    },
+    locations: [
+        {
+            type: {
+                type: String,
+                default: 'Point',
+                enum: ['Point']
+            },
+            coordinates: [Number],
+            address: String,
+            description: String,
+            day: Number
+        }
+    ],
+    guides: Array
+});
+
+// To store embedded documents in mongodb i.e store user based on id
+toursSchema.pre('save', async (next) => {
+    let tourGuides = this.guides.map(async id => await User.findById(id));
+    this.guides = await Promise.all(tourGuides);
+    next();
 });
 
 const Tour = mongoose.model('Tours', toursSchema);

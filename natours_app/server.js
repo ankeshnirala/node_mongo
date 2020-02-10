@@ -3,7 +3,6 @@ const chalk = require('chalk');
 const mongoose = require('mongoose');
 // console.log(x);
 
-
 process.on('uncaughtException', error => {
     console.log(error.name, error.message);
     console.log(`🔥🔥🔥  Uncaught Exception 🔥🔥🔥`);
